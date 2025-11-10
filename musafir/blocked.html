@@ -10,8 +10,40 @@
     <div class="content-wrapper">
       <h1>Access Denied</h1>
       <p>Musafir has blocked this site to protect your purity.</p>
-      <p class="ayah">"And seek help through patience and prayer..." (Quran 2:45)</p>
+      <p id="ayah" class="ayah">"And seek help through patience and prayer..." (Quran 2:45)</p>
     </div>
   </div>
+  <script>
+    (function () {
+      const ayats = [
+        { text: 'And seek help through patience and prayer...', ref: 'Quran 2:45' },
+        { text: 'Indeed, with hardship comes ease.', ref: 'Quran 94:6' },
+        { text: 'And whoever fears Allah — He will make for him a way out.', ref: 'Quran 65:2' },
+        { text: 'So which of the favors of your Lord would you deny?', ref: 'Quran 55:13' },
+        { text: 'My Lord, increase me in knowledge.', ref: 'Quran 20:114' },
+        { text: 'And whoever is patient and forgives — indeed, that is of the matters [requiring] determination.', ref: 'Quran 42:43' },
+        { text: 'Call upon Me; I will respond to you.', ref: 'Quran 40:60' },
+        { text: 'Indeed, Allah is with those who are patient.', ref: 'Quran 2:153' }
+      ];
+
+      function pickRandomAyah() {
+        const i = Math.floor(Math.random() * ayats.length);
+        return ayats[i];
+      }
+
+      function render() {
+        const el = document.getElementById('ayah');
+        if (!el) return;
+        const a = pickRandomAyah();
+        el.innerHTML = `${a.text} <span class="reference">(${a.ref})</span>`;
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', render);
+      } else {
+        render();
+      }
+    })();
+  </script>
 </body>
 </html>
