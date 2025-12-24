@@ -7,193 +7,187 @@
     <link rel="shortcut icon" href="icons/icon48.png" type="image/png" sizes="48x48" />
     <link rel="shortcut icon" href="icons/icon128.png" type="image/png" sizes="128x128" />
     <title>Musafir Support - Safe Browsing Tool</title>
+    <meta name="description" content="Musafir extension support: docs, troubleshooting, and contact for blocking and focus features.">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root{
+            --bg:#f6f8fb;
+            --card:#ffffff;
+            --primary:#1e7b5a;
+            --muted:#6b7280;
+            --accent:#0ea5a4;
+            --radius:12px;
+            --max-width:1100px;
+            --container-padding:28px;
         }
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.5;
-            background-color: #f9f9f9;
-            color: #333;
-            padding: 20px;
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background:linear-gradient(180deg,var(--bg),#eef3f8);
+            color:#0f172a;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            padding:40px 20px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        header h1 {
-            font-size: 2em;
-            color: #2e7d32;
-            margin-bottom: 5px;
-        }
-        header p {
-            font-size: 1em;
-            color: #666;
-        }
-        .section {
-            margin-bottom: 25px;
-        }
-        .section h2 {
-            font-size: 1.5em;
-            color: #2e7d32;
-            margin-bottom: 10px;
-            padding-left: 10px;
-            border-left: 3px solid #2e7d32;
-        }
-        .section p, .section ul {
-            font-size: 1em;
-            color: #555;
-            margin-left: 10px;
-        }
-        .section ul {
-            list-style: none;
-        }
-        .section ul li {
-            margin-bottom: 8px;
-            padding-left: 15px;
-            position: relative;
-        }
-        .section ul li::before {
-            content: '•';
-            color: #2e7d32;
-            position: absolute;
-            left: 0;
-        }
-        .section a {
-            color: #2e7d32;
-            text-decoration: none;
-        }
-        .section a:hover {
-            text-decoration: underline;
-        }
-        /* Feedback Form Styling */
-        .feedback-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-left: 10px;
-        }
-        .feedback-form textarea {
-            width: 100%;
-            height: 100px;
-            padding: 10px;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-            font-size: 1em;
-            color: #555;
-            resize: vertical;
-        }
-        .feedback-form button {
-            align-self: flex-start;
-            padding: 8px 20px;
-            background-color: #2e7d32;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-        .feedback-form button:hover {
-            background-color: #388e3c;
-        }
-        footer {
-            text-align: center;
-            padding-top: 20px;
-            margin-top: 20px;
-            border-top: 1px solid #e0e0e0;
-            font-size: 0.9em;
-            color: #777;
-        }
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            header h1 {
-                font-size: 1.6em;
-            }
-            .section h2 {
-                font-size: 1.3em;
-            }
-            .section p, .section ul {
-                font-size: 0.95em;
-            }
-            .feedback-form textarea {
-                font-size: 0.95em;
-            }
-            .feedback-form button {
-                font-size: 0.95em;
-            }
+        .wrap{max-width:var(--max-width);margin:0 auto}
+        .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 24px rgba(15,23,42,0.06);padding:var(--container-padding)}
+        .header{display:flex;align-items:center;gap:18px}
+        .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px}
+        .brand h1{font-size:1.25rem;margin:0;color:var(--primary)}
+        .brand p{margin:2px 0 0;color:var(--muted);font-size:0.95rem}
+        .grid{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:22px}
+        .hero{padding:18px;border-radius:10px;background:linear-gradient(180deg,rgba(30,123,90,0.04),transparent)}
+        .hero h2{margin:0 0 8px 0;font-size:1.15rem}
+        .hero p{margin:0;color:var(--muted)}
+        .actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;border:1px solid transparent;background:var(--primary);color:#fff;text-decoration:none;font-weight:600;font-size:0.95rem}
+        .btn.secondary{background:transparent;border-color:#e6eef0;color:var(--primary)}
+
+        nav.help-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+        nav.help-nav a{padding:8px 10px;border-radius:8px;background:#f1f5f9;color:#0f172a;text-decoration:none;font-size:0.92rem;border:1px solid transparent}
+        nav.help-nav a:hover{background:#e6eef3}
+
+        .panel{background:linear-gradient(180deg,#ffffff, #fbfdff);padding:18px;border-radius:10px}
+        .section{margin-bottom:18px}
+        .section h3{margin:0 0 8px 0;font-size:1rem;color:var(--primary)}
+        .muted{color:var(--muted);font-size:0.95rem}
+
+        .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .faq-item{background:#fbfdff;border:1px solid #eef4f6;padding:12px;border-radius:8px}
+        .faq-item h4{margin:0;font-size:0.95rem}
+        .faq-item p{margin:6px 0 0;color:var(--muted);font-size:0.9rem}
+
+        .support-right{position:relative}
+        .contact-card{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#f9fffe);border:1px solid #e7f6f3}
+        .contact-card form{display:flex;flex-direction:column;gap:10px}
+        input[type="text"],input[type="email"],textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;font-size:0.95rem}
+        textarea{min-height:110px;resize:vertical}
+        .small{font-size:0.85rem;color:var(--muted)}
+
+        footer{margin-top:18px;padding-top:12px;border-top:1px dashed #e6eef0;color:var(--muted);font-size:0.9rem;text-align:center}
+
+        @media (max-width:980px){.grid{grid-template-columns:1fr 320px}}
+        @media (max-width:760px){
+            .grid{grid-template-columns:1fr;}
+            .faq{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Musafir Support</h1>
-            <p>Your Safe Browsing Companion</p>
-        </header>
-
-        <div class="section">
-            <h2>Welcome</h2>
-            <p>Thank you for using Musafir, a Chrome extension that blocks adult content and enforces focus with a timer. This page offers guidance and support.</p>
+    <div class="wrap">
+        <div class="card header">
+            <div class="logo">
+                <img src="icon128.png" alt="icon" width="100%" height="100%">
+            </div>
+            <div class="brand">
+                <h1>Musafir Support</h1>
+                <p>Your safe-browsing companion — blocking adult content and helping you stay focused.</p>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>How to Use</h2>
-            <ul>
-                <li>Click the Musafir icon to open the popup and select a timer (e.g., 1 Hour).</li>
-                <li>Adult websites are blocked and redirected to a blocked page.</li>
-                <li>Inappropriate media on webpages is blurred automatically.</li>
-                <li>Check the popup for the timer status or completion message.</li>
-            </ul>
-        </div>
+        <div class="grid">
+            <main>
+                <section class="card hero">
+                    <h2>Need help with Musafir?</h2>
+                    <p class="muted">Find quick solutions, FAQs, troubleshooting steps, and contact options below. If you still need help, use the contact form to reach our team — we typically respond within 48 hours.</p>
 
-        <div class="section">
-            <h2>Troubleshooting</h2>
-            <ul>
-                <li>If the timer doesn’t reset, reload Musafir at `chrome://extensions/`.</li>
-                <li>For no blocking, ensure the extension is active and check `Ctrl+Shift+J` for errors.</li>
-                <li>If the popup fails, clear your cache or reinstall.</li>
-            </ul>
-        </div>
+                    <div class="actions">
+                        <a class="btn" href="popup.html">Open Extension</a>
+                        <a class="btn secondary" href="options.html">Extension Settings</a>
+                        <a class="btn secondary" href="#contact">Contact Support</a>
+                    </div>
 
-        <div class="section">
-            <h2>Contact</h2>
-            <p>Email us at <a href="mailto:jalal.dev.design@gmail.com">jalal.dev.design@gmail.com</a> for help. We’ll respond within 48 hours.</p>
-        </div>
+                    <nav class="help-nav" aria-label="Quick links">
+                        <a href="#how-to">How to Use</a>
+                        <a href="#troubleshooting">Troubleshooting</a>
+                        <a href="#faq">FAQ</a>
+                        <a href="#updates">Release Notes</a>
+                    </nav>
+                </section>
 
-        <div class="section">
-            <h2>Updates</h2>
-            <p>Version 1.0.0 (March 6, 2025): Initial release with blocking and media blurring. Future updates may include whitelists and analytics.</p>
-        </div>
+                <section id="how-to" class="panel section">
+                    <h3>How to Use</h3>
+                    <p class="muted">Musafir helps you avoid adult content and set focus sessions with a timer. Basic steps:</p>
+                    <ul>
+                        <li>Click the Musafir icon to open the popup and select a timer (for example, 25 minutes or 1 hour).</li>
+                        <li>Blocked sites will be redirected to an informative blocked page.</li>
+                        <li>Media flagged as inappropriate is blurred automatically on pages you visit.</li>
+                        <li>View timer status and controls in the popup; stop or extend sessions as needed.</li>
+                    </ul>
+                </section>
 
-        <div class="section">
-            <h2>Feedback</h2>
-            <p>We value your input! Share your thoughts anonymously below:</p>
-            <form class="feedback-form" action="https://formsubmit.co/jalal.dev.design@gmail.com" method="POST">
-                <textarea name="Feedback" placeholder="Your feedback..." required></textarea>
-                <input type="hidden" name="_subject" value="Musafir Feedback Submission">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://yourusername.github.io/musafir-support/thank-you.html">
-                <button type="submit">Submit Feedback</button>
-            </form>
+                <section id="troubleshooting" class="panel section">
+                    <h3>Troubleshooting</h3>
+                    <div class="faq">
+                        <div class="faq-item">
+                            <h4>Timer won't reset</h4>
+                            <p class="muted">Reload Musafir at <code>chrome://extensions/</code> or toggle the extension off/on. If the issue persists, restart your browser.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Blocking not working</h4>
+                            <p class="muted">Ensure Musafir is enabled and has the correct permissions. Open the extension console with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd> (Windows) to check for errors.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Popup fails to open</h4>
+                            <p class="muted">Clear browser cache and try again. If needed, reinstall the extension from your store or the provided CRX.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Media blurring not applied</h4>
+                            <p class="muted">Some sites use dynamic content or heavy obfuscation. Report the page via the contact form so we can improve detection rules.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="faq" class="panel section">
+                    <h3>FAQ</h3>
+                    <div class="faq">
+                        <div class="faq-item">
+                            <h4>Can I whitelist sites?</h4>
+                            <p class="muted">Whitelist functionality is planned. For now, use the extension options to manage exceptions where available.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Is my data collected?</h4>
+                            <p class="muted">Musafir does not collect personal browsing data. Any reports you submit are used to improve detection and support only.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="updates" class="panel section">
+                    <h3>Release Notes</h3>
+                    <p class="muted">Version 1.0.0 (March 6, 2025): Initial release with site blocking and media blurring. Future updates will include whitelists and analytics.</p>
+                </section>
+            </main>
+
+            <aside class="support-right">
+                <div id="contact" class="contact-card card">
+                    <h3>Contact Support</h3>
+                    <p class="small">Need personalized help? Fill this form and we'll get back within 48 hours.</p>
+                    <form action="https://formsubmit.co/jalal.dev.design@gmail.com" method="POST" aria-label="Support contact form">
+                        <label class="small">Name
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </label>
+                        <label class="small">Email
+                            <input type="email" name="email" placeholder="you@example.com" required>
+                        </label>
+                        <label class="small">Subject
+                            <input type="text" name="subject" placeholder="Short subject" required>
+                        </label>
+                        <label class="small">Message
+                            <textarea name="message" placeholder="Describe the problem or request" required></textarea>
+                        </label>
+                        <input type="hidden" name="_subject" value="Musafir Support Request">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="/">
+                        <button class="btn" type="submit">Send Message</button>
+                        <p class="small">Or email us directly at <a href="mailto:jalal.dev.design@gmail.com">jalal.dev.design@gmail.com</a></p>
+                    </form>
+                </div>
+            </aside>
         </div>
 
         <footer>
-            <p>© 2025 Musafir. All rights reserved.</p>
+            <p>© 2025 Musafir. Built for safe, focused browsing.</p>
         </footer>
     </div>
 </body>
